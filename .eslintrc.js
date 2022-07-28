@@ -41,6 +41,7 @@ module.exports = {
       },
     ],
     'react/prop-types': 'off',
+    'react/no-children-prop': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/no-unresolved': 'off',
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],

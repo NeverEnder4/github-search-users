@@ -1,6 +1,7 @@
-import { Center, Image, Heading, Link, Button } from '@chakra-ui/react';
+import { Center, Image, Heading, Link } from '@chakra-ui/react';
 
 import somethingWentWrong from '@/assets/something-went-wrong.png';
+import { Button } from '@/components/Elements';
 
 export function GlobalErrorFallback() {
   const navigateToOrigin = () => {

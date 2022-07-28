@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 
-import { Home, Results } from '@/pages';
+import { Home, Results } from '@/features/search';
 
 export function AppRoutes() {
   const routes = [
@@ -10,5 +10,5 @@ export function AppRoutes() {
 
   const element = useRoutes([...routes]);
 
-  return { element };
+  return <>{element}</>;
 }
