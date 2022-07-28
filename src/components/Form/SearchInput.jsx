@@ -1,17 +1,23 @@
 import { SearchIcon } from '@chakra-ui/icons';
 import { Input, InputGroup, InputLeftElement, FormControl, FormLabel } from '@chakra-ui/react';
 
-export const SearchInput = ({ registration, label, labelFontSize }) => {
+export const SearchInput = ({
+  registration,
+  label,
+  labelFontSize,
+  fontColor,
+  maxWidth = '600px',
+}) => {
   return (
-    <FormControl>
+    <FormControl maxWidth={maxWidth}>
       {label && (
-        <FormLabel fontSize={labelFontSize} textAlign="center">
+        <FormLabel color={fontColor} fontSize={labelFontSize} textAlign="center">
           {label}
         </FormLabel>
       )}
-      <InputGroup maxWidth="600px">
+      <InputGroup>
         <InputLeftElement pointerEvents="none" children={<SearchIcon color="gray.400" />} />
-        <Input focusBorderColor="teal.400" {...registration} />
+        <Input color={fontColor} focusBorderColor="teal.400" {...registration} />
       </InputGroup>
     </FormControl>
   );
