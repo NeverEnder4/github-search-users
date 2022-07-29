@@ -5,7 +5,6 @@ import { Form, SearchInput } from '@/components/Form';
 
 export const SearchForm = ({ onSuccess }) => {
   const handleSubmit = async (values) => {
-    console.log(values, 'TEST');
     if (onSuccess) onSuccess(values.query);
   };
 

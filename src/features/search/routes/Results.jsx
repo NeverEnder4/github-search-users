@@ -1,20 +1,46 @@
+import { Center, Divider, Heading, useMediaQuery } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { ResultsLayout } from '../components';
+import { ResultsLayout, UserList, Pagination } from '../components';
 import { useSearchUser } from '../hooks';
 
 export function Results() {
+  const [isLargerThan650] = useMediaQuery('(min-width: 650px)');
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q');
-  const [userQuery, setUserQuery] = useState('');
+  const after = searchParams.get('a');
+  const before = searchParams.get('b');
+  const first = searchParams.get('f') || 10;
 
-  const { loading, error, data } = useSearchUser('');
+  const [userQuery, setUserQuery] = useState({
+    query: '',
+    first: 10,
+    before: undefined,
+    after: undefined,
+  });
 
-  console.log(loading, error, data, 'TEST');
+  const { loading, error, data } = useSearchUser(userQuery);
+
+  const totalCount = data?.search?.userCount;
+  const users = data?.search?.edges?.map((edge) => edge.node);
+  const pageInfo = data?.search?.pageInfo;
 
   useEffect(() => {
-    setUserQuery(query);
-  }, [query]);
-  return <ResultsLayout>{data && JSON.stringify(data)}</ResultsLayout>;
+    setUserQuery({ query, after, before, first });
+  }, [query, after, before, first]);
+
+  useEffect(() => {});
+
+  return (
+    <ResultsLayout>
+      <Heading as="h2">Total Users: {totalCount}</Heading>
+      <Divider />
+      <Center p={3} width={isLargerThan650 ? '600px' : '100%'}>
+        <UserList users={users} loading={loading} />
+      </Center>
+      <Divider />
+      <Pagination pageInfo={pageInfo} />
+    </ResultsLayout>
+  );
 }

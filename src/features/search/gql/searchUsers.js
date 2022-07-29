@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const SEARCH_USERS = gql`
-  query Search($query: String!) {
-    search(query: $query, type: USER, first: 10) {
+  query Search($query: String!, $after: String, $before: String, $first: Int) {
+    search(query: $query, type: USER, first: $first, after: $after, before: $before) {
       userCount
       edges {
         node {

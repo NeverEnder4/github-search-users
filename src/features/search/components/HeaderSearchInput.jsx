@@ -3,11 +3,12 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  IconButton,
   FormControl,
   FormLabel,
   VisuallyHidden,
 } from '@chakra-ui/react';
+
+import { IconButton } from '@/components/Elements';
 
 export const HeaderSearchInput = ({
   label,
@@ -45,9 +46,11 @@ export const HeaderSearchInput = ({
         />
         <InputRightElement
           children={
-            <IconButton colorScheme="transparent" onClick={handleSearch}>
-              <SearchIcon color="white" />
-            </IconButton>
+            <IconButton
+              icon={<SearchIcon color="white" />}
+              colorScheme="transparent"
+              onClick={handleSearch}
+            />
           }
         />
       </InputGroup>

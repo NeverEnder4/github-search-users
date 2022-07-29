@@ -8,9 +8,11 @@ export const Button = ({
   type = 'button',
   maxWidth = '200px',
   minWidth = '140px',
+  width,
 }) => {
   return (
     <ChakraButton
+      width={width}
       maxWidth={maxWidth}
       minWidth={minWidth}
       colorScheme={colorScheme}
