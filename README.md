@@ -7,6 +7,8 @@ A front end application built with Create React App and deployed with Vercel. Th
 - [x] Can see notable information for each search result: profile pic, bio, star/follower/repo count.
 - [x] Can select a search result and be taken to applicaple github page.
 
+## The filters button does not do anything when clicked. I was planning on adding filters for extra pizzazz but ran out of time. Thanks!
+
 <br />
 
 ## Table of Contents  
