@@ -20,10 +20,12 @@ export function Home() {
   const { View } = useLottie(options, style);
 
   const handleSuccess = (query) => {
-    navigate({
-      pathname: '/search',
-      search: `?q=${query}`,
-    });
+    if (query) {
+      navigate({
+        pathname: '/search',
+        search: `?q=${query}`,
+      });
+    }
   };
 
   return (

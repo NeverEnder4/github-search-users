@@ -12,12 +12,14 @@ export const Pagination = ({ pageInfo }) => {
   const handleNextClick = () => {
     setSearchParams({ q: query, a: pageInfo?.endCursor });
     setStartCursors((prevState) => [pageInfo?.startCursor, ...prevState]);
+    window.scrollTo(0, 0);
   };
 
   const handlePrevClick = () => {
     setSearchParams({ q: query, b: startCursors[0] });
     const filtered = startCursors.filter((cursor) => cursor !== startCursors[0]);
     setStartCursors(filtered);
+    window.scrollTo(0, 0);
   };
 
   let justifyContent = 'space-between';

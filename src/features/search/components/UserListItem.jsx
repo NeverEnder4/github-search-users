@@ -63,7 +63,7 @@ export const UserListItem = ({ user }) => {
           </Box>
         </Collapse>
         <HStack color="gray.500" spacing={2}>
-          <UserListItemStat data={user?.starredRepositories?.totalCount} label="Starred" />
+          <UserListItemStat data={user?.starredRepositories?.totalCount} label="Stars" />
           <Divider orientation="vertical" height={3} />
           <UserListItemStat data={user?.followers?.totalCount} label="Followers" />
           <Divider orientation="vertical" height={3} />
