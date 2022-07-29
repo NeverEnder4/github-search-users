@@ -59,7 +59,7 @@ src
 <a name="description"/>
 
 ### About
-This application is built with [ReactJS](https://reactjs.org/) and utilizes the [Chakra UI](https://chakra-ui.com/) library for overall UI. Queries to the V4 Github GraphQL API are made using Apollo [Apollo](https://www.apollographql.com/docs/react/). 
+This application is built with [ReactJS](https://reactjs.org/) and utilizes the [Chakra UI](https://chakra-ui.com/) library for overall UI. Queries to the [V4 Github GraphQL API](https://docs.github.com/en/graphql) are made using [Apollo](https://www.apollographql.com/docs/react/). 
 
 Some other notable packages include:
 - [react-router-dom](https://reactrouter.com/) for routing
@@ -97,7 +97,7 @@ yarn start
 
 ### Deploy
 
-This app is deployed with Vercel. When commits are merged to the main branch, Vercel detects this and redeploys.
+This app is deployed with Vercel. When PRs are merged to the main branch, Vercel detects this and redeploys.
 
 More information can be found on the vercel deployment instruction page https://vercel.com/guides/deploying-react-with-vercel
 
