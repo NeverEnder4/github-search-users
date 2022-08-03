@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# GITHUB SEARCH USERS
+A front end application built with Create React App and deployed with Vercel. The goal of this project is to create and deploy an app with these specs:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [x] Can search for users and see paginated list of results
+- [x] Can navigate through next and previous pages
+- [x] Can see total count of search results
+- [x] Can see notable information for each search result: profile pic, bio, star/follower/repo count.
+- [x] Can select a search result and be taken to applicaple github page.
 
-## Available Scripts
+## The filters button does not do anything when clicked. I was planning on adding filters for extra pizzazz but ran out of time. Thanks!
 
-In the project directory, you can run:
+<br />
 
-### `npm start`
+## Table of Contents  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### &#128193; [File Structure](#file-structure)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### &#128421; [React App](#react-app)
+ - #### [About](#description)
+ 
+ - #### [Tooling](#tooling-app)
 
-### `npm test`
+ - #### [Installation](#install-app)
+ 
+ - #### [Deploy](#deploy-app)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### &#128206; [Resources](#resources)
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<a name="file-structure"/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## &#128193; File Structure
+```sh
+src
+|
++-- assets            # static assets, png, img, lottie, fonts, etc
+|
++-- components        # components used across the application
+|
++-- config            # global configs, for example, github base url
+|
++-- features          # feature based modules
+|
++-- lib               # different libraries preconfigured for the application
+|
++-- providers         # all application providers
+|
++-- routes            # routing configuration
+|
++-- utils             # global utility functions
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br />
 
-### `npm run eject`
+<a name="react-app"/>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## &#128421; React App
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<a name="description"/>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### About
+This application is built with [ReactJS](https://reactjs.org/) and utilizes the [Chakra UI](https://chakra-ui.com/) library for overall UI. Queries to the [V4 Github GraphQL API](https://docs.github.com/en/graphql) are made using [Apollo](https://www.apollographql.com/docs/react/). 
 
-## Learn More
+Some other notable packages include:
+- [react-router-dom](https://reactrouter.com/) for routing
+- [react-hook-form](https://react-hook-form.com/) for easy to use forms/input control
+- [react-error-boundary](https://www.npmjs.com/package/react-error-boundary) to render a fallback view in case of errors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<a name="tooling-app"/>
 
-### Code Splitting
+### Tooling
+The tooling for the development of the app consists of:
+- Eslint - To enforce code rules
+- Prettier - For code formatting
+- Husky - For pre-commit linting/testing
+- Craco - To enable absolute imports
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<a name="install-app"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Installation
 
-### Making a Progressive Web App
+1. Clone the repo from github.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Open the project folder in a code editor and in the root directory run:
+```
+yarn install
+```
+3. To launch the app make sure port 3000 is clear and run:
+```
+yarn start
+```
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<a name="deploy-app"/>
 
-### Deployment
+### Deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This app is deployed with Vercel. When PRs are merged to the main branch, Vercel detects this and redeploys.
 
-### `npm run build` fails to minify
+More information can be found on the vercel deployment instruction page https://vercel.com/guides/deploying-react-with-vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a name="resources"/>
+
+## &#128206; Resources
+Extra section for more resource links!
