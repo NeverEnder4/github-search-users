@@ -7,27 +7,42 @@ export const SEARCH_USERS = gql`
       edges {
         node {
           ... on User {
-            login
-            name
             avatarUrl
             bio
+            createdAt
+            company
+            databaseId
+            email
             followers {
               totalCount
             }
+            following {
+              totalCount
+            }
+            isHireable
+            location
+            login
+            name
             repositories {
               totalCount
             }
             starredRepositories {
               totalCount
             }
+            status {
+              message
+            }
+            twitterUsername
+            url
+            websiteUrl
           }
         }
       }
       pageInfo {
-        startCursor
         endCursor
         hasNextPage
         hasPreviousPage
+        startCursor
       }
     }
   }

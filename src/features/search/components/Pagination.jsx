@@ -1,35 +1,16 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { HStack, Button } from '@chakra-ui/react';
-import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 
-export const Pagination = ({ pageInfo }) => {
-  const [startCursors, setStartCursors] = useState([]);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('q');
-
-  const handleNextClick = () => {
-    setSearchParams({ q: query, a: pageInfo?.endCursor });
-    setStartCursors((prevState) => [pageInfo?.startCursor, ...prevState]);
-    window.scrollTo(0, 0);
-  };
-
-  const handlePrevClick = () => {
-    setSearchParams({ q: query, b: startCursors[0] });
-    const filtered = startCursors.filter((cursor) => cursor !== startCursors[0]);
-    setStartCursors(filtered);
-    window.scrollTo(0, 0);
-  };
-
+export const Pagination = ({ pageInfo, cursors, handleNextClick, handlePrevClick, loading }) => {
   let justifyContent = 'space-between';
 
   if (pageInfo?.hasNextPage && !pageInfo?.hasPreviousPage) justifyContent = 'flex-end';
   else if (!pageInfo?.hasNextPage && pageInfo?.hasPreviousPage) justifyContent = 'flex-start';
 
+  if (loading) return null;
   return (
     <HStack justifyContent={justifyContent}>
-      {pageInfo?.hasPreviousPage && startCursors.length && (
+      {pageInfo?.hasPreviousPage && cursors.length && (
         <Button onClick={handlePrevClick}>
           <ChevronLeftIcon />
           Prev Page

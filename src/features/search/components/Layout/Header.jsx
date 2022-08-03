@@ -3,7 +3,7 @@ import { HStack, Box, useMediaQuery } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { HeaderSearchInput } from '../components';
+import { SearchInput } from './SearchInput';
 
 import { ButtonWithIcon, IconButton, RouteLink } from '@/components/Elements';
 
@@ -22,14 +22,20 @@ export const Header = () => {
     setSearchParams({ q: searchValue });
   };
   return (
-    <HStack spacing={4} p={4} backgroundColor="blackAlpha.800" justifyContent="space-between">
+    <HStack
+      width="100%"
+      spacing={4}
+      p={4}
+      backgroundColor="blackAlpha.800"
+      justifyContent="space-between"
+    >
       <RouteLink color="white" to="/">
         <Box display="flex" alignItems="center">
           <ArrowBackIcon marginRight={2} />
           Back
         </Box>
       </RouteLink>
-      <HeaderSearchInput
+      <SearchInput
         name="query"
         value={searchValue}
         onChange={handleChange}

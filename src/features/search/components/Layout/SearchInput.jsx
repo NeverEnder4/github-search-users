@@ -10,7 +10,7 @@ import {
 
 import { IconButton } from '@/components/Elements';
 
-export const HeaderSearchInput = ({
+export const SearchInput = ({
   label,
   name,
   labelFontSize,
