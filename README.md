@@ -11,7 +11,9 @@ A front end application built with Create React App and deployed with Vercel. Th
 
 TODO with more time:
 
+- [ ] Add better filters. For instance, I would like to change the `repos/followers greater than x` filters so that a user could choose greater than or less than. I would also like to allow for sort ordering by asc/desc.
 - [ ] Add more unit and integration testing.
+- [ ] Better apollo query error handling. The UserList component receives the error as a prop. I would like to add UI to display an error message to the user.
 - [ ] Currently, the API key is exposed when making calls via Apollo to the V4 GraphQL Github API from the client. I would set up a small REST API server with express and have the client make search requests to the API (maybe set up a POST `/search` route). The API would then make GraphQL requests to the Github API, obscuring the key on the backend.
 <br />
 
