@@ -2,7 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import { ApolloMemoryProvider, ErrorProvider } from './providers';
+import { ApolloMemoryProvider, ErrorProvider, ChakraMemoryProvider } from './providers';
 
 // For unit testing basic elements
 const renderWithChakraProvider = (ui, options) =>
@@ -22,6 +22,16 @@ const renderWithErrorProvider = (ui, options) =>
     ...options.testingLibraryOptions,
   });
 
+// For unit testing Link components
+const renderWithChakraMemoryProvider = (
+  ui,
+  options = { testingLibraryOptions: {}, testProviderProps: {} }
+) =>
+  render(ui, {
+    wrapper: (props) => <ChakraMemoryProvider {...props} {...options?.testProviderProps} />,
+    ...options.testingLibraryOptions,
+  });
+
 // re-export everything
 export * from '@testing-library/react';
 
@@ -32,4 +42,5 @@ export {
   renderWithChakraProvider,
   renderWithApolloMemoryProvider,
   renderWithErrorProvider,
+  renderWithChakraMemoryProvider,
 };

@@ -6,10 +6,11 @@ export const IconButton = ({
   accessibilityLabel,
   isHidden,
   colorScheme = 'teal',
+  isDisabled = false,
 }) => {
   if (isHidden) return null;
   return (
-    <ChakraIconButton onClick={onClick} colorScheme={colorScheme}>
+    <ChakraIconButton isDisabled={isDisabled} onClick={onClick} colorScheme={colorScheme}>
       {/* Added for accessability */}
       <>
         <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>

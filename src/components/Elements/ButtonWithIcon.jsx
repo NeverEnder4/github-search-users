@@ -5,13 +5,15 @@ export const ButtonWithIcon = ({
   leftIcon,
   rightIcon,
   children,
+  isDisabled,
+  isHidden,
   size = 'md',
   colorScheme = 'teal',
-  isHidden,
 }) => {
   if (isHidden) return null;
   return (
     <Button
+      isDisabled={isDisabled}
       size={size}
       colorScheme={colorScheme}
       onClick={onClick}
