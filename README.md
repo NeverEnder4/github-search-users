@@ -42,6 +42,8 @@ src
 |
 +-- features          # feature based modules
 |
++-- hooks             # global hooks
+|
 +-- lib               # different libraries preconfigured for the application
 |
 +-- providers         # all application providers
@@ -92,6 +94,11 @@ yarn install
 3. To launch the app make sure port 3000 is clear and run:
 ```
 yarn start
+```
+
+To test the fallback view provided by the ErrorBoundary in development, navigate to:
+```
+/error
 ```
 
 
