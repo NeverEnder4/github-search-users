@@ -3,12 +3,14 @@ import { Button as ChakraButton } from '@chakra-ui/react';
 export const Button = ({
   children,
   onClick,
+  width,
+  form,
+  variant,
   size = 'md',
   colorScheme = 'teal',
   type = 'button',
   maxWidth = '200px',
   minWidth = '140px',
-  width,
 }) => {
   return (
     <ChakraButton
@@ -19,6 +21,8 @@ export const Button = ({
       size={size}
       onClick={onClick}
       type={type}
+      variant={variant}
+      form={form}
     >
       {children}
     </ChakraButton>

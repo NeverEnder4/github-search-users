@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+
+import { useSearchParams } from './useSearchParams';
 
 const initialState = { startCursor: undefined, endCursor: undefined };
 
@@ -9,8 +10,8 @@ export const usePagination = (pageInfo = initialState) => {
 
   const { startCursor, endCursor } = pageInfo;
   const [startCursors, setStartCursors] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('q');
+  const { params, setSearchParams } = useSearchParams();
+  const { first, query } = params;
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
@@ -21,17 +22,17 @@ export const usePagination = (pageInfo = initialState) => {
   const handleNextClick = useCallback(() => {
     if (!startCursor) return;
 
-    setSearchParams({ q: query, a: endCursor });
+    setSearchParams({ q: query, f: first, a: endCursor });
     setStartCursors((prevState) => [startCursor, ...prevState]);
     scrollToTop();
-  }, [query, setSearchParams, startCursor, endCursor]);
+  }, [query, setSearchParams, startCursor, endCursor, first]);
 
   // Prev page: the before field is set to the previous page startCursor and the cursor is removed from the array
   // Memoize function because it will be passed as a prop to the Pagination component
   const handlePrevClick = useCallback(() => {
     if (!startCursors.length) return;
 
-    setSearchParams({ q: query, b: startCursors[0] });
+    setSearchParams({ q: query, f: first, b: startCursors[0] });
     const filtered = startCursors.filter((cursor) => cursor !== startCursors[0]);
     setStartCursors(filtered);
     scrollToTop();

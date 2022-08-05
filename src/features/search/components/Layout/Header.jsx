@@ -1,16 +1,19 @@
 import { ArrowBackIcon, SettingsIcon } from '@chakra-ui/icons';
-import { HStack, Box, useMediaQuery } from '@chakra-ui/react';
+import { HStack, Box } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+
+import { useSearchParams } from '../../hooks';
 
 import { SearchInput } from './SearchInput';
 
 import { ButtonWithIcon, IconButton, RouteLink } from '@/components/Elements';
+import { useMediaQueries } from '@/hooks';
 
-export const Header = () => {
-  const [isLargerThan650] = useMediaQuery('(min-width: 650px)');
+export const Header = ({ toggleFilters }) => {
+  const { mediumScreen } = useMediaQueries();
   const [searchValue, setSearchValue] = useState('');
-  const [, setSearchParams] = useSearchParams();
+  const { params, setSearchParams } = useSearchParams();
+  const { first } = params;
 
   const settingsIcon = <SettingsIcon color="white" />;
 
@@ -19,7 +22,7 @@ export const Header = () => {
   };
 
   const handleSearch = () => {
-    setSearchParams({ q: searchValue });
+    setSearchParams({ q: searchValue, f: first });
   };
   return (
     <HStack
@@ -43,8 +46,13 @@ export const Header = () => {
         maxWidth="400px"
         fontColor="white"
       />
-      <IconButton isHidden={isLargerThan650} icon={settingsIcon} accessibilityLabel="Filters" />
-      <ButtonWithIcon isHidden={!isLargerThan650} leftIcon={settingsIcon}>
+      <IconButton
+        onClick={toggleFilters}
+        isHidden={mediumScreen}
+        icon={settingsIcon}
+        accessibilityLabel="Filters"
+      />
+      <ButtonWithIcon onClick={toggleFilters} isHidden={!mediumScreen} leftIcon={settingsIcon}>
         Filters
       </ButtonWithIcon>
     </HStack>

@@ -23,7 +23,7 @@ export function Home() {
     if (query) {
       navigate({
         pathname: '/search',
-        search: `?q=${query}`,
+        search: `?q=${query}&f=5`,
       });
     }
   };

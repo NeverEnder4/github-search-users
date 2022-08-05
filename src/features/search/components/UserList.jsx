@@ -1,4 +1,4 @@
-import { SearchListSkeleton } from './SearchListSkeleton';
+import { SearchListSkeleton } from './Skeletons';
 import { UserListItem } from './UserListItem';
 
 import { List } from '@/components';

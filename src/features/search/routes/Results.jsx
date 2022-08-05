@@ -1,19 +1,15 @@
 import { Center, Divider, Heading } from '@chakra-ui/react';
-import React, { useEffect, useState, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
 import { UserList, Pagination } from '../components';
 import { Layout } from '../components/Layout';
-import { useSearchUser, usePagination } from '../hooks';
+import { useSearchUser, usePagination, useSearchParams } from '../hooks';
 
 import { useMediaQueries } from '@/hooks/useMediaQueries';
 
 export function Results() {
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get('q');
-  const after = searchParams.get('a');
-  const before = searchParams.get('b');
-  const first = searchParams.get('f') || 5;
+  const { params } = useSearchParams();
+  const { query, before, after, first } = params;
 
   const { mediumScreen } = useMediaQueries();
 
@@ -24,6 +20,8 @@ export function Results() {
     after: undefined,
   });
 
+  console.log(userQuery, 'UQ');
+
   const { loading, error, data } = useSearchUser(userQuery);
 
   const totalCount = data?.search?.userCount;
@@ -33,7 +31,7 @@ export function Results() {
   const { handlePrevClick, handleNextClick, cursors } = usePagination(pageInfo);
 
   useEffect(() => {
-    setUserQuery({ query, after, before, first });
+    setUserQuery({ query, after, before, first: parseInt(first) });
   }, [query, after, before, first]);
 
   const pagination = (
@@ -54,7 +52,7 @@ export function Results() {
       <Divider />
       {pagination}
       <Center p={3} width={mediumScreen ? '700px' : '100%'}>
-        <UserList users={users} loading={loading} />
+        <UserList users={users} loading={loading} error={error} />
       </Center>
       <Divider />
       {pagination}

@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
 
-export const Form = ({ onSubmit, children, role, options }) => {
+export const Form = ({ id, onSubmit, children, options, role = 'search' }) => {
   const methods = useForm({ ...options });
 
   return (
-    <form style={{ width: '100%' }} role="search" onSubmit={methods.handleSubmit(onSubmit)}>
+    <form id={id} style={{ width: '100%' }} role={role} onSubmit={methods.handleSubmit(onSubmit)}>
       {children(methods)}
     </form>
   );
