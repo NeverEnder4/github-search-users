@@ -7,8 +7,12 @@ A front end application built with Create React App and deployed with Vercel. Th
 - [x] Can see notable information for each search result: profile pic, bio, star/follower/repo count.
 - [x] Can select a search result and be taken to applicaple github page.
 
-## The filters button does not do anything when clicked. I was planning on adding filters for extra pizzazz but ran out of time. Thanks!
+<br />
 
+TODO with more time:
+
+- [ ] Add more unit and integration testing.
+- [ ] Currently, the API key is exposed when making calls via Apollo to the V4 GraphQL Github API from the client. I would set up a small REST API server with express and have the client make search requests to the API (maybe set up a POST `/search` route). The API would then make GraphQL requests to the Github API, obscuring the key on the backend.
 <br />
 
 ## Table of Contents  
@@ -22,6 +26,8 @@ A front end application built with Create React App and deployed with Vercel. Th
 
  - #### [Installation](#install-app)
  
+ - #### [Testing](#test-app)
+ 
  - #### [Deploy](#deploy-app)
 
 
@@ -33,6 +39,8 @@ A front end application built with Create React App and deployed with Vercel. Th
 ## &#128193; File Structure
 ```sh
 src
+|
++-- __mocks__         # global mocks for testing
 |
 +-- assets            # static assets, png, img, lottie, fonts, etc
 |
@@ -50,7 +58,7 @@ src
 |
 +-- routes            # routing configuration
 |
-+-- utils             # global utility functions
++-- test              # global test setup files
 ```
 
 <br />
@@ -69,6 +77,7 @@ Some other notable packages include:
 - [react-router-dom](https://reactrouter.com/) for routing
 - [react-hook-form](https://react-hook-form.com/) for easy to use forms/input control
 - [react-error-boundary](https://www.npmjs.com/package/react-error-boundary) to render a fallback view in case of errors
+- [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) for unit & integration testing
 
 
 <a name="tooling-app"/>
@@ -79,6 +88,8 @@ The tooling for the development of the app consists of:
 - Prettier - For code formatting
 - Husky - For pre-commit linting/testing
 - Craco - To enable absolute imports
+
+In the package.json there is a validate command which runs the test suite and lints staged files in parallel. This command is run in the husky pre-commit hook.
 
 
 <a name="install-app"/>
@@ -96,11 +107,24 @@ yarn install
 yarn start
 ```
 
-To test the fallback view provided by the ErrorBoundary in development, navigate to:
+To view the fallback provided by the ErrorBoundary in development, navigate to:
 ```
 /error
 ```
 
+<a name="test-app"/>
+
+### Testing
+
+To run the Jest testing suite:
+```
+yarn test
+```
+
+To run the Jest testing suite with code coverage analysis:
+```
+yarn test:coverage
+```
 
 <a name="deploy-app"/>
 
