@@ -6,6 +6,7 @@ export const Button = ({
   width,
   form,
   variant,
+  isDisabled = false,
   size = 'md',
   colorScheme = 'teal',
   type = 'button',
@@ -14,6 +15,7 @@ export const Button = ({
 }) => {
   return (
     <ChakraButton
+      isDisabled={isDisabled}
       width={width}
       maxWidth={maxWidth}
       minWidth={minWidth}

@@ -22,7 +22,7 @@ export const Header = ({ toggleFilters }) => {
   };
 
   const handleSearch = () => {
-    setSearchParams({ q: searchValue, f: first });
+    if (searchValue !== '') setSearchParams({ q: searchValue, f: first });
   };
   return (
     <HStack

@@ -36,7 +36,7 @@ export const usePagination = (pageInfo = initialState) => {
     const filtered = startCursors.filter((cursor) => cursor !== startCursors[0]);
     setStartCursors(filtered);
     scrollToTop();
-  }, [query, setSearchParams, startCursors, setStartCursors]);
+  }, [query, setSearchParams, startCursors, setStartCursors, first]);
 
   return { handleNextClick, handlePrevClick, cursors: startCursors };
 };

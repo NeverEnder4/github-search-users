@@ -11,7 +11,7 @@
     "@emotion/styled": "^11.9.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.2",
     "date-fns": "^2.29.1",
     "framer-motion": "^6.5.1",
     "graphql": "^16.5.0",
@@ -31,9 +31,11 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "test:coverage": "craco test --coverage",
+    "test:validate": "craco test --watchAll=false",
     "eject": "craco eject",
     "prepare": "husky install",
-    "validate": "lint-staged",
+    "validate": "npm-run-all --parallel test:validate && lint-staged",
     "lint": "eslint --fix --ext .js,.jsxs ./src --ignore-path .gitignore"
   },
   "eslintConfig": {
@@ -65,11 +67,21 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1"
   },
   "lint-staged": {
     "*.{js,jsx}": [
       "yarn lint"
+    ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@/(.+)": "<rootDir>/src/$1"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/test/*"
     ]
   }
 }
